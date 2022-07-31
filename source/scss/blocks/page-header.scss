@@ -241,8 +241,10 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
+    transition: all 0.4s ease-in;
 
     &::after {
+      transition: width 0.4s ease-in;
       content: "";
       position: absolute;
       bottom: 0;
@@ -265,6 +267,17 @@
       }
     }
 
+    &::before {
+      transition: width 0.4s ease-in;
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: $c-light;
+      right: 0;
+    }
+
     &.active {
       &::after {
         display: block;
@@ -275,10 +288,19 @@
     &:focus {
       color: $c-purple;
       outline: none;
+      transition: width 0.4s ease-in;
+
 
       &::after {
         opacity: 1;
         background-color: $c-purple;
+      }
+
+      &::before {
+        left: 0;
+        animation: out 0.4s;
+        background-color: $c-purple;
+        width: 100%;
       }
     }
   }

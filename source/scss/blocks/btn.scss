@@ -41,6 +41,7 @@
 
   &:hover {
     color: $c-purple;
+    animation: color 0.3ms;
   }
 
   &:focus {
