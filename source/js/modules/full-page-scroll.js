@@ -54,6 +54,8 @@ export default class FullPageScroll {
 
   changeVisibilityDisplay() {
     this.bgElement.classList.add(`active`);
+    this.animateTextRandom(this.screenElements[this.activeScreen].id);
+
     setTimeout(() => {
 
       this.screenElements.forEach((screen) => {
@@ -67,7 +69,6 @@ export default class FullPageScroll {
         this.screenElements[this.activeScreen].classList.add(`active`);
       }, 100);
     }, this.screenElements[this.activeScreen].id === `prizes` ? 800 : 0);
-
   }
 
   changeActiveMenuItem() {
@@ -95,6 +96,74 @@ export default class FullPageScroll {
       this.activeScreen = Math.min(this.screenElements.length - 1, ++this.activeScreen);
     } else {
       this.activeScreen = Math.max(0, --this.activeScreen);
+    }
+  }
+
+  animateTextRandom(elId) {
+    const screensObjs = {
+      top: {
+        class: `intro__title`
+      },
+      story: {
+        class: `slider__item-title`
+      },
+      prizes: {
+        class: `prizes__title`
+      },
+      rules: {
+        class: `rules__title`
+      },
+      game: {
+        class: `game__title`
+      },
+      top2: {
+        class: `intro__label`
+      },
+      top3: {
+        class: `intro__date`
+      },
+    };
+
+    const nodeText = document.querySelector(`.${screensObjs[elId].class}`);
+    const nodeTextContent = nodeText.innerHTML;
+    nodeText.innerHTML = ``;
+
+    if (elId === `top1` || elId === `top2`) {
+      nodeText.style.transitionDelay = `2s`;
+    }
+
+    const arrWords = nodeTextContent.split(` `);
+
+    for (let y = 0; y < arrWords.length; y++) {
+      let spanLine = document.createElement(`span`);
+      spanLine.classList.add(`animation-span-line`);
+      nodeText.append(spanLine);
+
+
+      for (let i = 0; i < arrWords[y].length; i++) {
+        let span = document.createElement(`span`);
+        span.classList.add(`animation-span-letter`);
+        span.innerHTML = arrWords[y][i];
+        const nthChilds = nodeText.querySelectorAll(`.animation-span-letter`);
+
+        setRandomDelay(nthChilds, arrWords[y].length);
+        spanLine.append(span);
+      }
+    }
+
+    if (elId === `top`) {
+      this.animateTextRandom(`top2`);
+      this.animateTextRandom(`top3`);
+    }
+
+    function getRandomNum(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    function setRandomDelay(nthChilds, tillNum) {
+      return nthChilds.forEach((i) => {
+        i.style.transitionDelay = `0.${getRandomNum(1, tillNum)}s`;
+      });
     }
   }
 }
