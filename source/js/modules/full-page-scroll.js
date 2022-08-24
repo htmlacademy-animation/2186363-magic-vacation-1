@@ -117,21 +117,18 @@ export default class FullPageScroll {
         class: `game__title`
       },
       top2: {
-        class: `intro__label`
-      },
-      top3: {
         class: `intro__date`
       },
     };
 
     const nodeText = document.querySelector(`.${screensObjs[elId].class}`);
-    const nodeTextContent = nodeText.innerHTML;
-    nodeText.innerHTML = ``;
 
-    if (elId === `top1` || elId === `top2`) {
-      nodeText.style.transitionDelay = `2s`;
+    if (nodeText.querySelector(`.animation-span-line`)) {
+      return;
     }
 
+    const nodeTextContent = nodeText.innerHTML;
+    nodeText.innerHTML = ``;
     const arrWords = nodeTextContent.split(` `);
 
     for (let y = 0; y < arrWords.length; y++) {
@@ -146,24 +143,29 @@ export default class FullPageScroll {
         span.innerHTML = arrWords[y][i];
         const nthChilds = nodeText.querySelectorAll(`.animation-span-letter`);
 
-        setRandomDelay(nthChilds, arrWords[y].length);
+        this.setRandomDelay(nthChilds, elId);
+
+
         spanLine.append(span);
       }
     }
 
     if (elId === `top`) {
       this.animateTextRandom(`top2`);
-      this.animateTextRandom(`top3`);
     }
+  }
 
-    function getRandomNum(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
-    }
+  getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
 
-    function setRandomDelay(nthChilds, tillNum) {
-      return nthChilds.forEach((i) => {
-        i.style.transitionDelay = `0.${getRandomNum(1, tillNum)}s`;
-      });
-    }
+  setRandomDelay(nthChilds, elId) {
+    return nthChilds.forEach((i) => {
+      if (elId === `top2`) {
+        i.style.transitionDelay = `${Number(`0.${this.getRandomNum(0, 8)}`) + 0.8}s`;
+        return;
+      }
+      i.style.transitionDelay = `0.${this.getRandomNum(0, 6)}s`;
+    });
   }
 }

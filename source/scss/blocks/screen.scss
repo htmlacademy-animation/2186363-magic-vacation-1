@@ -8,6 +8,7 @@
 
   &--hidden {
     display: none;
+    will-change: all;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
