@@ -139,8 +139,6 @@
 .page-header__nav {
   display: flex;
   align-items: center;
-  opacity: 0;
-  transition: all 1s cubic-bezier(.34,.84,.85,.84);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -153,6 +151,12 @@
     padding: 4rem 3.5rem;
     color: $c-dark;
     background-color: $c-light;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(.34,.84,.85,.84);
+
+    .page-header--menu-opened & {
+      opacity: 1;
+    }
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -161,6 +165,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    transform: translateX(-100%);
     flex-direction: column;
     align-items: flex-start;
     padding: 2rem 3.5rem;
@@ -168,10 +173,10 @@
     color: $c-dark;
     background-color: $c-light;
     overflow-y: auto;
-  }
 
-  .page-loaded & {
-    opacity: 1;
+    .page-header--menu-opened & {
+      transform: translateX(0);
+    }
   }
 }
 
