@@ -85,7 +85,7 @@
   .leaf-blue-1,
   .leaf-blue-2 {
     animation-duration: 2s;
-    animation-delay: 500ms;
+    animation-delay: 300ms;
     animation-fill-mode: forwards;
     animation-timing-function: cubic-bezier(0.6, 1.33, 0.92, 1.3);
     opacity: 0;
@@ -100,7 +100,7 @@
     z-index: 3;
     transform-origin: 50% 55%;
     transform: rotate(0);
-    animation: flamingo 400ms cubic-bezier(.17,.67,.85,1.2), flamingoEnd 2s infinite ease 1800ms alternate;
+    animation: flamingo 400ms cubic-bezier(.17,.67,.85,1.2), flamingoEnd 2s infinite ease 1500ms alternate;
   }
 
   .suitcase {

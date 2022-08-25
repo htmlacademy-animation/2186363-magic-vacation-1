@@ -80,22 +80,6 @@
 
 .form__button {
   flex-grow: 1;
-  opacity: 0;
-  transition: opacity 1s ease 5s;
-
-
-  span {
-    opacity: 0;
-    transition: opacity 0.4s ease 200ms;
-  }
-
-  .screen--show & {
-    opacity: 1;
-    span {
-      opacity: 1;
-    }
-  }
-
 
   @media (orientation: portrait) {
     position: relative;
@@ -142,16 +126,8 @@
 }
 
 .form--result {
-  opacity: 0;
-  transition: opacity 5s ease;
-
-  .screen--show & {
-    opacity: 1;
-  }
 
   .form__field {
-    width: calc(100% - 31rem);
-
     @media (min-width: $stop-scaling) {
       width: calc(100% - 310px);
     }
@@ -168,4 +144,39 @@
       width: calc(100% - 5rem);
     }
   }
+}
+
+.result--prize {
+  button {
+    flex-grow: 1;
+    // opacity: 0;
+    transition: opacity 0.6s ease 1s;
+
+
+    // span {
+    //   opacity: 0;
+    //   transition: opacity 0.3s ease 200ms;
+    // }
+
+    .screen--show & {
+      opacity: 1;
+      // span {
+      //   opacity: 1;
+      // }
+    }
+  }
+
+  input {
+    width: 0px;
+    // opacity: 0;
+    transition: all 0.6s ease 1s;
+    padding: 0 3rem;
+    margin-left: auto;
+
+    .screen--show & {
+      width: calc(100% - 31rem);
+      opacity: 1;
+    }
+  }
+
 }
