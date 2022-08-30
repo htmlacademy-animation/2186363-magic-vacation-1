@@ -146,15 +146,16 @@
     left: 0;
     right: 0;
     bottom: 0;
-    transform: translateX(-100%);
     flex-direction: column;
     align-items: flex-start;
     padding: 4rem 3.5rem;
     color: $c-dark;
     background-color: $c-light;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(.34,.84,.85,.84);
 
     .page-header--menu-opened & {
-      transform: translateX(0);
+      opacity: 1;
     }
   }
 
@@ -174,17 +175,6 @@
     overflow-y: auto;
 
     .page-header--menu-opened & {
-      transform: translateX(0);
-    }
-  }
-
-  @media (min-width: $mobile) {
-    transform: translateX(10px);
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(.34,.84,.85,.84);
-
-    .page-loaded & {
-      opacity: 1;
       transform: translateX(0);
     }
   }

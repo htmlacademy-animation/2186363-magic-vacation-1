@@ -126,9 +126,8 @@
 }
 
 .form--result {
-  .form__field {
-    width: calc(100% - 31rem);
 
+  .form__field {
     @media (min-width: $stop-scaling) {
       width: calc(100% - 310px);
     }

@@ -8,6 +8,7 @@
 
   &--hidden {
     display: none;
+    will-change: all;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
@@ -356,8 +357,55 @@
     opacity: 1;
     pointer-events: auto;
   }
+
 }
 
 .screen--rules {
   background-color: $c-dark;
+}
+
+.form--result {
+  .form__button {
+    position: fixed;
+    right: 80px;
+    flex-grow: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    span {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.2s;
+    }
+  }
+
+  .form__field {
+    width: 0px;
+    opacity: 0;
+    transition: all 0.4s;
+    padding: 0 3rem;
+    margin-left: auto;
+    margin-right: 19%;
+
+    &::placeholder {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.4s;
+    }
+  }
+
+  .screen--result.screen--show & {
+    .form__button {
+      opacity: 1;
+      span {
+        opacity: 1;
+      }
+    }
+    .form__field {
+      width: calc(100% - 24rem);
+      opacity: 1;
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+  }
 }

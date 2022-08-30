@@ -22,3 +22,31 @@
     }
   }
 }
+
+.animation-div-overflow {
+  overflow: hidden;
+}
+
+.animation-span-line {
+  white-space: nowrap;
+  transition: all 400ms ease-in-out;
+  overflow: hidden;
+  display: inline-block;
+  padding: 5px;
+
+  &:nth-child(even) {
+    transition-delay: 0.4s;
+  }
+}
+
+
+.animation-span-letter {
+  transform: translateY(140%);
+  display: inline-block;
+  transition: all 600ms ease;
+
+
+  .active & {
+    transform: translateY(0%);
+  }
+}
