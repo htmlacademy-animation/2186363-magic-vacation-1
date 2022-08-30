@@ -10700,8 +10700,10 @@ __webpack_require__.r(__webpack_exports__);
         let targetEl = [].slice.call(results).filter(function (el) {
           return el.getAttribute(`id`) === target;
         });
-        targetEl[0].classList.add(`screen--show`);
         targetEl[0].classList.remove(`screen--hidden`);
+        setTimeout(() => {
+          targetEl[0].classList.add(`screen--show`);
+        });
       });
     }
 
@@ -10709,8 +10711,11 @@ __webpack_require__.r(__webpack_exports__);
     if (playBtn) {
       playBtn.addEventListener(`click`, function () {
         [].slice.call(results).forEach(function (el) {
-          el.classList.remove(`screen--show`);
           el.classList.add(`screen--hidden`);
+          setTimeout(() => {
+            el.classList.remove(`screen--show`);
+          });
+
         });
         document.getElementById(`messages`).innerHTML = ``;
         document.getElementById(`message-field`).focus();
