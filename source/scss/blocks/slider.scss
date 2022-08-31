@@ -240,6 +240,42 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  &--prev {
+    animation-name: rotatePrev;
+  }
+
+  &--next {
+    animation-name: rotateNext;
+  }
+
+  &--prev,
+  &--next {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes rotatePrev {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(360deg);
+  }
+}
+
+@keyframes rotateNext {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-360deg);
+  }
 }
 
 .slider__pagination.swiper-pagination {
@@ -302,6 +338,6 @@
 .swiper-slide-active {
   & .slider__item-text {
     transform: translateX(0);
-        opacity: 1;
+    opacity: 1;
   }
 }
