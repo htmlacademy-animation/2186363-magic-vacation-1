@@ -28,6 +28,21 @@ html {
   box-sizing: inherit;
 }
 
+.purple {
+  --c-dark: #5f458c;
+  --c-purple: #a67ee5;
+}
+.blue {
+  --c-dark: #8fb9e2;
+  --c-purple: #3f72ee;
+}
+
+.light-blue {
+  --c-dark: #3f72ee;
+  --c-purple: #8fb9e2;
+}
+
+
 body {
   position: relative;
   margin: 0;

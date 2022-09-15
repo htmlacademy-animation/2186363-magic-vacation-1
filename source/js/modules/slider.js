@@ -5,6 +5,9 @@ export default () => {
   let sliderContainer = document.getElementById(`story`);
   sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
 
+  let bodyContainer = document.getElementById(`body`);
+
+
   const setSlider = function () {
     if (((window.innerWidth / window.innerHeight) < 1) || window.innerWidth < 769) {
       storySlider = new Swiper(`.js-slider`, {
@@ -17,7 +20,10 @@ export default () => {
         },
         on: {
           slideChange: () => {
+            console.log(`slideChange`);
+            sliderContainer.classList.add(`.add-blue`);
             if (storySlider.activeIndex === 0 || storySlider.activeIndex === 1) {
+              console.log(`2 slideChange`);
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg"), linear-gradient(180deg, rgba(83, 65, 118, 0) 0%, #523E75 16.85%)`;
             } else if (storySlider.activeIndex === 2 || storySlider.activeIndex === 3) {
               sliderContainer.style.backgroundImage = `url("img/slide2.jpg"), linear-gradient(180deg, rgba(45, 54, 179, 0) 0%, #2A34B0 16.85%)`;
@@ -53,12 +59,24 @@ export default () => {
           slideChange: () => {
             if (storySlider.activeIndex === 0) {
               sliderContainer.style.backgroundImage = `url("img/slide1.jpg")`;
+              bodyContainer.classList.remove(`light-blue`);
+              bodyContainer.classList.remove(`blue`);
+              bodyContainer.classList.add(`purple`);
             } else if (storySlider.activeIndex === 2) {
               sliderContainer.style.backgroundImage = `url("img/slide2.jpg")`;
+              bodyContainer.classList.remove(`purple`);
+              bodyContainer.classList.remove(`blue`);
+              bodyContainer.classList.add(`light-blue`);
             } else if (storySlider.activeIndex === 4) {
               sliderContainer.style.backgroundImage = `url("img/slide3.jpg")`;
+              bodyContainer.classList.remove(`purple`);
+              bodyContainer.classList.remove(`light-blue`);
+              bodyContainer.classList.add(`blue`);
             } else if (storySlider.activeIndex === 6) {
               sliderContainer.style.backgroundImage = `url("img/slide4.jpg")`;
+              bodyContainer.classList.remove(`light-blue`);
+              bodyContainer.classList.remove(`blue`);
+              bodyContainer.classList.add(`purple`);
             }
           },
           resize: () => {
