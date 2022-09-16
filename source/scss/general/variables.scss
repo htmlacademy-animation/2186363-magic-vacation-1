@@ -1,6 +1,6 @@
 $c-light: #ffffff;
-$c-dark: #5f458c;
-$c-purple: #a67ee5;
+$c-dark: var(--c-dark);
+$c-purple: var(--c-purple);
 
 $font: "Proxima Nova", "Arial", sans-serif;
 $font-alt: "Radical",  "Arial", sans-serif;

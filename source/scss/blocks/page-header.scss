@@ -1,3 +1,4 @@
+
 .page-header {
   position: fixed;
   top: 0;
@@ -151,11 +152,12 @@
     padding: 4rem 3.5rem;
     color: $c-dark;
     background-color: $c-light;
-    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
     transition: opacity 1s cubic-bezier(.34,.84,.85,.84);
 
     .page-header--menu-opened & {
-      opacity: 1;
+      visibility: visible;
     }
   }
 

@@ -37,23 +37,62 @@
   left: 0;
   right: 0;
   z-index: 1;
+
+  ul {
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+
+    .active & {
+      opacity: 1;
+    }
+  }
+}
+
+.screen--intro {
+  .screen__footer {
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.34,.84,.85,.84);
+    bottom:  -3.3rem;
+
+    .active & {
+      opacity: 1;
+      bottom: 0;
+    }
+  }
+}
+
+.screen--intro.active {
+  .screen__footer {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
+.screen--prizes {
+  .screen__footer {
+    bottom:  0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.34,.84,.85,.84);
+
+    .active & {
+      opacity: 1;
+    }
+  }
+}
+
+.screen--prizes.active {
+  .screen__footer {
+    opacity: 1;
+  }
 }
 
 .screen__footer {
   position: absolute;
-  bottom:  -3.3rem;
   left: 0;
   right: 0;
   color: $c-dark;
   background-color: $c-light;
   z-index: 1;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(.34,.84,.85,.84);
-
-  .page-loaded & {
-    opacity: 1;
-    bottom: 0;
-  }
 
   @media (max-width: $tablet) and (orientation: portrait) {
     width: 3.5rem;
@@ -77,6 +116,7 @@
     }
   }
 }
+
 
 .screen__footer-wrapper {
   @include container;
@@ -185,6 +225,12 @@
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease-in 0.2s;
+
+    .screen__footer--full & {
+      opacity: 1;
+    }
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -225,6 +271,12 @@
     text-align: left;
     font-size: 1.4rem;
     line-height: 1.1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in 0.2s;
+
+    .screen__footer--full & {
+      opacity: 1;
+    }
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
@@ -240,6 +292,12 @@
     align-items: flex-start;
     justify-content: center;
     margin: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+
+    .active & {
+      opacity: 1;
+    }
   }
 
   svg {

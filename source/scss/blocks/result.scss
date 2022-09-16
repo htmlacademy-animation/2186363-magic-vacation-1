@@ -433,4 +433,31 @@
       width: 45rem;
     }
   }
+
+  .result__button {
+    & p {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+
+      .screen--show & {
+        opacity: 1;
+      }
+    }
+    & span {
+      animation-name: rotateAndMove;
+      animation-duration: 0.4s;
+      animation-timing-function: ease-out;
+    }
+  }
+
+  @keyframes rotateAndMove {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotate(-360deg);
+    }
+  }
 }
