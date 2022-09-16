@@ -13,6 +13,7 @@ export default class FullPageScroll {
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.bodyContainer = document.getElementById(`body`);
   }
 
   init() {
@@ -55,6 +56,10 @@ export default class FullPageScroll {
   changeVisibilityDisplay() {
     this.bgElement.classList.add(`active`);
     this.animateTextRandom(this.screenElements[this.activeScreen].id);
+
+    this.bodyContainer.classList.remove(`light-blue`);
+    this.bodyContainer.classList.remove(`blue`);
+    this.bodyContainer.classList.add(`purple`);
 
     setTimeout(() => {
 
